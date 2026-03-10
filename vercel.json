@@ -11,5 +11,13 @@
       "src": "/(.*)",
       "dest": "src/server.js"
     }
+  ],
+  "headers": [
+    {
+      "source": "/api-docs/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    }
   ]
 }
