@@ -55,3 +55,17 @@ app.listen(PORT, () => {
   console.log(`Server running at:  http://localhost:${PORT}`);
   console.log(`Swagger Docs at:    http://localhost:${PORT}/api-docs`);
 });
+// SWAGGER DOCS
+app.use("/api-docs", swaggerUi.serve);
+app.get("/api-docs", swaggerUi.setup(swaggerSpec, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  swaggerOptions: {
+    url: '/api-docs-json'
+  }
+}));
+
+// Swagger JSON endpoint
+app.get("/api-docs-json", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerSpec);
+});
