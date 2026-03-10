@@ -11,6 +11,10 @@ const options = {
     },
     servers: [
       {
+    url: 'https://week3day2backend.vercel.app',
+    description: 'Production Server'
+  },
+      {
         url: "http://localhost:3000",
         description: "Local development server",
       },
