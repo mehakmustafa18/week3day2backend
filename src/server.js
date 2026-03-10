@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const cors = require("cors");
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const connectDB = require("./config/db");
@@ -16,7 +16,11 @@ const PORT = process.env.PORT || 3000;
 
 // MIDDLEWARE
 app.use(express.json());
-
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 // SWAGGER JSON ENDPOINT
 app.get("/api-docs-json", (req, res) => {
   res.setHeader("Content-Type", "application/json");
